@@ -1,0 +1,9 @@
+mutation registerUser($data: CreateUserInputDto!) {
+  data: registerUser(createUserDto: $data) {
+    code
+    deviceToken
+    message
+    success
+    token
+  }
+}

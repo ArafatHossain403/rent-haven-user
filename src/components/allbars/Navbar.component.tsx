@@ -1,3 +1,4 @@
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -7,6 +8,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   return (
@@ -27,16 +35,16 @@ const Navbar = () => {
         </div>
 
         {/* Center - Nav Links */}
-        <div className="navbar-center hidden md:flex space-x-6">
+        <div className="hidden md:flex space-x-6">
           <Link
             href="/stays"
-            className="font-medium text-gray-600 hover:text-black"
+            className="font-medium text-muted-foreground hover:text-foreground"
           >
             Stays
           </Link>
           <Link
             href="/experiences"
-            className="font-medium text-gray-600 hover:text-black"
+            className="font-medium text-muted-foreground hover:text-foreground"
           >
             Experiences
           </Link>
@@ -44,65 +52,69 @@ const Navbar = () => {
 
         {/* Right - Profile and Buttons */}
         <div className="space-x-4 flex items-center">
-          <button className="font-medium text-gray-600 hover:text-black">
+          <Button variant="ghost" className="font-medium">
             Airbnb your home
-          </button>
+          </Button>
           <FontAwesomeIcon
             icon={faGlobe}
-            className="h-5 cursor-pointer text-gray-600"
+            className="h-5 cursor-pointer text-muted-foreground"
           />
-          <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn rounded-full space-x-2"
-            >
-              <FontAwesomeIcon icon={faBars} className="h-5 text-gray-600" />
-              <FontAwesomeIcon icon={faUser} className="h-5 text-gray-600" />
-            </div>
-            <ul
-              tabIndex={0}
-              className="dropdown-content mt-3 p-2 shadow menu menu-compact bg-base-100 rounded-box w-52"
-            >
-              <li>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                className="flex items-center space-x-2 rounded-full"
+              >
+                <FontAwesomeIcon
+                  icon={faBars}
+                  className="h-5 text-muted-foreground"
+                />
+                <FontAwesomeIcon
+                  icon={faUser}
+                  className="h-5 text-muted-foreground"
+                />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-52">
+              <DropdownMenuItem asChild>
                 <Link href="/profile">Profile</Link>
-              </li>
-              <li>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
                 <Link href="/settings">Settings</Link>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
-          </div>
+              </DropdownMenuItem>
+              <DropdownMenuItem>Logout</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
 
       {/* Search Box */}
-      <div className="flex justify-center items-center py-4 bg-white shadow-lg rounded-full mx-auto max-w-3xl px-6">
+      <div className="flex justify-center items-center py-4 bg-background shadow-lg rounded-full mx-auto max-w-3xl px-6">
         <div className="flex justify-between w-full items-center space-x-4">
           <div className="flex flex-col items-start">
             <span className="text-xs font-semibold">Where</span>
-            <span className="text-sm text-gray-500">Search destinations</span>
+            <span className="text-sm text-muted-foreground">
+              Search destinations
+            </span>
           </div>
-          <div className="border-l border-gray-300 h-10"></div>
+          <div className="border-l border-muted h-10"></div>
           <div className="flex flex-col items-start">
             <span className="text-xs font-semibold">Check in</span>
-            <span className="text-sm text-gray-500">Add dates</span>
+            <span className="text-sm text-muted-foreground">Add dates</span>
           </div>
-          <div className="border-l border-gray-300 h-10"></div>
+          <div className="border-l border-muted h-10"></div>
           <div className="flex flex-col items-start">
             <span className="text-xs font-semibold">Check out</span>
-            <span className="text-sm text-gray-500">Add dates</span>
+            <span className="text-sm text-muted-foreground">Add dates</span>
           </div>
-          <div className="border-l border-gray-300 h-10"></div>
+          <div className="border-l border-muted h-10"></div>
           <div className="flex flex-col items-start">
             <span className="text-xs font-semibold">Who</span>
-            <span className="text-sm text-gray-500">Add guests</span>
+            <span className="text-sm text-muted-foreground">Add guests</span>
           </div>
-          <button className="btn btn-primary btn-circle">
+          <Button variant="default" size="icon" className="rounded-full">
             <FontAwesomeIcon icon={faSearch} />
-          </button>
+          </Button>
         </div>
       </div>
     </div>
