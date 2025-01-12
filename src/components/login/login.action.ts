@@ -1,5 +1,7 @@
 import {
   CreateUserInputDto,
+  LoginDto,
+  useLoginUserMutation,
   useRegisterUserMutation,
 } from "@/graphql/generated";
 import { useRouter } from "next/navigation";
@@ -7,13 +9,13 @@ import { toast } from "react-hot-toast";
 import {  setCookie } from "cookies-next";
 
 
-export const useSignUpForm = () => {
+export const useLoginForm = () => {
   const router = useRouter();
-  const { mutateAsync, isError, isLoading } = useRegisterUserMutation();
+  const { mutateAsync, isError, isLoading } = useLoginUserMutation();
 
-  const register = async (payload: CreateUserInputDto) => {
+  const login = async (payload: LoginDto) => {
     try {
-        console.log('payload', payload);
+      console.log("payload", payload);
       const res = await mutateAsync({ data: payload });
       const msg = res?.data?.message;
       if (!res?.data.success) {
@@ -26,10 +28,9 @@ export const useSignUpForm = () => {
         router.refresh();
       }
     } catch (error: any) {
-             toast.error(error.message || "An unexpected error occurred.");
-
+      toast.error(error.message || "An unexpected error occurred.");
     }
   };
 
-  return { register, isError, isLoading };
+  return { login, isError, isLoading };
 };

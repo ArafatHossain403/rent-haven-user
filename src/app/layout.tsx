@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Providers from "@/components/providers/Providers";
+import Navbar from "@/components/allbars/Navbar.component";
+import MainFooter from "@/components/footer/MainFooter.component";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -19,7 +21,6 @@ export const metadata: Metadata = {
   description: "Find Route Rest Place",
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,7 +31,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Navbar />
         <Providers> {children}</Providers>
+        <MainFooter />
       </body>
     </html>
   );

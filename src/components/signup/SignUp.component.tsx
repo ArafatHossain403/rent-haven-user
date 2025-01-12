@@ -1,120 +1,129 @@
 "use client";
-import React, { useState } from "react";
-import { useRegisterUserMutation } from "@/graphql/generated";
+
+import React from "react";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { useSignUpForm } from "./signup.action";
 
 export const SignUpForm = () => {
-  const { mutateAsync, isError, isLoading } = useRegisterUserMutation();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    name: "",
-  });
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    setErrorMessage("");
-
-    try {
-      const response = await mutateAsync({
-        data: {
-          email: formData.email,
-          password: formData.password,
-          name: formData.name,
-        },
-      });
-
-      if (response.data.success) {
-        alert("Registration successful! Token: " + response.data.token);
-      } else {
-        setErrorMessage(response.data.message || "Registration failed.");
-      }
-    } catch (error) {
-      console.error("Error during registration:", error);
-      setErrorMessage("An unexpected error occurred. Please try again later.");
-    }
-  };
+  const { register, isLoading } = useSignUpForm();
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4">
-      <div>
-        <label
-          htmlFor="name"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Name
-        </label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        />
-      </div>
+    <div className="max-w-md mx-auto p-4 border rounded shadow-md">
+      <h2 className="text-2xl font-semibold text-center mb-6">Sign Up</h2>
+      <Formik
+        initialValues={{
+          email: "",
+          password: "",
+          name: "",
+          phone: "",
+          bio: "",
+        }}
+        validationSchema={Yup.object({
+          email: Yup.string()
+            .email("Invalid email address")
+            .required("Email is required"),
+          password: Yup.string()
+            .min(8, "Password must be at least 8 characters")
+            .required("Password is required"),
+          name: Yup.string().required("Name is required"),
+          phone: Yup.string().optional(),
+          bio: Yup.string().optional(),
+        })}
+        onSubmit={(values, { setSubmitting }) => {
+          console.log("Submitting form:", values);
+          register(values);
+          setSubmitting(false);
+        }}
+      > 
+        {({ values, errors, touched, handleChange, handleBlur }) => (
+          <Form className="space-y-4">
+            {/* Name */}
+            <div>
+              <Input
+                type="text"
+                placeholder="Name"
+                name="name"
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className="w-full"
+              />
+              {touched.name && errors.name && (
+                <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+              )}
+            </div>
 
-      <div>
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Email
-        </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        />
-      </div>
+            {/* Email */}
+            <div>
+              <Input
+                type="email"
+                placeholder="Email"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className="w-full"
+              />
+              {touched.email && errors.email && (
+                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              )}
+            </div>
 
-      <div>
-        <label
-          htmlFor="password"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Password
-        </label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        />
-      </div>
+            {/* Password */}
+            <div>
+              <Input
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className="w-full"
+              />
+              {touched.password && errors.password && (
+                <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+              )}
+            </div>
 
-      {isError && (
-        <p className="text-red-500 text-sm">
-          {errorMessage || "An error occurred."}
-        </p>
-      )}
+            {/* Phone (optional) */}
+            <div>
+              <Input
+                type="text"
+                placeholder="Phone (Optional)"
+                name="phone"
+                value={values.phone}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className="w-full"
+              />
+            </div>
 
-      <button
-        type="submit"
-        disabled={isLoading}
-        className={`w-full py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${
-          isLoading ? "bg-gray-400" : "bg-indigo-600 hover:bg-indigo-700"
-        } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
-      >
-        {isLoading ? "Registering..." : "Sign Up"}
-      </button>
-    </form>
+            {/* Bio (optional) */}
+            <div>
+              <Input
+                type="text"
+                placeholder="Bio (Optional)"
+                name="bio"
+                value={values.bio}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className="w-full"
+              />
+            </div>
+
+            {/* Submit Button */}
+            <div className="text-center">
+              <Button type="submit" disabled={isLoading} className="w-full">
+                {isLoading ? "Submitting..." : "Sign Up"}
+              </Button>
+            </div>
+          </Form>
+        )}
+      </Formik>
+    </div>
   );
 };
 

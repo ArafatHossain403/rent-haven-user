@@ -11,3 +11,14 @@ export const RegisterUser = gql`
   }
 }
     `;
+export const LoginUser = gql`
+    mutation loginUser($data: LoginDto!) {
+  data: loginUser(loginDto: $data) {
+    code
+    deviceToken
+    message
+    success
+    token
+  }
+}
+    `;

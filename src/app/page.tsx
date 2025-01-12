@@ -7,11 +7,9 @@ import MainFooter from "@/components/footer/MainFooter.component";
 export default function Home() {
   return (
     <>
-      <Navbar />
       <TopBar />
       <IconNavBar/>
       <ListCard/>
-      <MainFooter/>
     </>
   );
 }

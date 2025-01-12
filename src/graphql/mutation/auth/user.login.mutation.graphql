@@ -7,3 +7,13 @@ mutation registerUser($data: CreateUserInputDto!) {
     token
   }
 }
+
+mutation loginUser($data: LoginDto!) {
+  data: loginUser(loginDto: $data) {
+    code
+    deviceToken
+    message
+    success
+    token
+  }
+}
