@@ -3,6 +3,8 @@
 import { apolloClient } from "@/config/apollo.config";
 import { ApolloProvider } from "@apollo/client";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Navbar from "../allbars/Navbar.component";
+import MainFooter from "../footer/MainFooter.component";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -18,14 +20,13 @@ export const Providers: React.FC<{
 
   return (
     <>
-
-        <QueryClientProvider client={queryClient}>
-          <ApolloProvider client={apolloClient}>
-   
-                    {children}
-          </ApolloProvider>
-        </QueryClientProvider>
-
+      <QueryClientProvider client={queryClient}>
+        <ApolloProvider client={apolloClient}>
+          <Navbar />
+          {children}
+          <MainFooter />
+        </ApolloProvider>
+      </QueryClientProvider>
     </>
   );
 };

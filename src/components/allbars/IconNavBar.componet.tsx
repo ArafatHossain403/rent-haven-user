@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const IconNavBar = () => {
   return (
-    <div className="flex space-x-6 overflow-x-auto py-4 px-8 border-b border-gray-300">
+    <div className="flex space-x-6 overflow-x-auto py-4 px-8 border-b border-gray-300 my-3">
       <Button variant="ghost" className="flex flex-col items-center space-y-1">
         <span className="text-lg">🏠</span>
         <span className="text-sm">Icons</span>

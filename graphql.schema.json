@@ -69,13 +69,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "UserModel",
-                "ofType": null
-              }
+              "kind": "OBJECT",
+              "name": "UserModel",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -117,13 +113,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "ListingModel",
-                "ofType": null
-              }
+              "kind": "OBJECT",
+              "name": "ListingModel",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -149,13 +141,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "PaymentModel",
-                "ofType": null
-              }
+              "kind": "OBJECT",
+              "name": "PaymentModel",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -981,19 +969,15 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
+              "kind": "LIST",
               "name": null,
               "ofType": {
-                "kind": "LIST",
+                "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "BookingModel",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "BookingModel",
+                  "ofType": null
                 }
               }
             },
@@ -1005,13 +989,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "CategoryModel",
-                "ofType": null
-              }
+              "kind": "OBJECT",
+              "name": "CategoryModel",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -1069,13 +1049,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "UserModel",
-                "ofType": null
-              }
+              "kind": "OBJECT",
+              "name": "UserModel",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -1117,19 +1093,15 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
+              "kind": "LIST",
               "name": null,
               "ofType": {
-                "kind": "LIST",
+                "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "ImageModel",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ImageModel",
+                  "ofType": null
                 }
               }
             },
@@ -1173,19 +1145,15 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
+              "kind": "LIST",
               "name": null,
               "ofType": {
-                "kind": "LIST",
+                "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "ReviewModel",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ReviewModel",
+                  "ofType": null
                 }
               }
             },
@@ -1664,13 +1632,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "BookingModel",
-                "ofType": null
-              }
+              "kind": "OBJECT",
+              "name": "BookingModel",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -1910,6 +1874,39 @@
               "ofType": {
                 "kind": "OBJECT",
                 "name": "ListingLimitOffset",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "findOneListing",
+            "description": null,
+            "args": [
+              {
+                "name": "id",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "ListingModel",
                 "ofType": null
               }
             },
@@ -2159,13 +2156,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "ListingModel",
-                "ofType": null
-              }
+              "kind": "OBJECT",
+              "name": "ListingModel",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -2207,13 +2200,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "UserModel",
-                "ofType": null
-              }
+              "kind": "OBJECT",
+              "name": "UserModel",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -2306,13 +2295,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -2322,19 +2307,15 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
+              "kind": "LIST",
               "name": null,
               "ofType": {
-                "kind": "LIST",
+                "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "BookingModel",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "BookingModel",
+                  "ofType": null
                 }
               }
             },
@@ -2394,19 +2375,15 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
+              "kind": "LIST",
               "name": null,
               "ofType": {
-                "kind": "LIST",
+                "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "ListingModel",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ListingModel",
+                  "ofType": null
                 }
               }
             },
@@ -2418,13 +2395,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -2434,13 +2407,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -2450,19 +2419,15 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
+              "kind": "LIST",
               "name": null,
               "ofType": {
-                "kind": "LIST",
+                "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "ReviewModel",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ReviewModel",
+                  "ofType": null
                 }
               }
             },
@@ -2478,7 +2443,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "Float",
                 "ofType": null
               }
             },

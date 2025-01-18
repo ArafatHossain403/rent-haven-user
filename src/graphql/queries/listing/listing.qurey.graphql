@@ -1,29 +1,16 @@
-import gql from 'graphql-tag';
-
-export const RegisterUser = gql`
-    mutation registerUser($data: CreateUserInputDto!) {
-  data: registerUser(createUserDto: $data) {
-    code
-    deviceToken
-    message
-    success
-    token
-  }
-}
-    `;
-export const LoginUser = gql`
-    mutation loginUser($data: LoginDto!) {
-  data: loginUser(loginDto: $data) {
-    code
-    deviceToken
-    message
-    success
-    token
-  }
-}
-    `;
-export const FilteredListings = gql`
-    query FilteredListings($endDate: DateTime, $limit: Int, $location: String, $maxPrice: Float, $minPrice: Float, $page: Int, $search: String, $sort_col: String, $sort_dir: String, $startDate: DateTime, $status: Int) {
+query FilteredListings(
+  $endDate: DateTime
+  $limit: Int
+  $location: String
+  $maxPrice: Float
+  $minPrice: Float
+  $page: Int
+  $search: String
+  $sort_col: String
+  $sort_dir: String
+  $startDate: DateTime
+  $status: Int
+) {
   data: filteredListings(
     endDate: $endDate
     limit: $limit
@@ -71,9 +58,9 @@ export const FilteredListings = gql`
     total_count
   }
 }
-    `;
-export const FindOneListing = gql`
-    query FindOneListing($id: String!) {
+
+
+query FindOneListing($id: String!) {
   data: findOneListing(id: $id) {
     availableFrom
     availableTo
@@ -134,4 +121,3 @@ export const FindOneListing = gql`
     updatedAt
   }
 }
-    `;
